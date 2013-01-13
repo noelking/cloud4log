@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context" 
+xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd         http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.1.xsd         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
+   
+	<bean id="propertyPlaceholderConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:META-INF/spring/database-test.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="entityManager" factory-bean="entityManagerFactory"
+		factory-method="createEntityManager" destroy-method="close" />
+
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceUnitName" value="persistenceUnit" />
+		<property name="dataSource" ref="dataSource" />
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+
+		</property>
+		<property name="jpaPropertyMap">
+			<map>
+				<entry key="hibernate.cache.use_second_level_cache" value="true" />
+				<entry key="hibernate.cache.use_query_cache" value="true" />
+				<entry key="hibernate.cache.provider_class" value="net.sf.ehcache.hibernate.SingletonEhCacheProvider" />
+				<entry key="hibernate.show_sql" value="${database.showsql}" />
+				<entry key="hibernate.use_sql_comments" value="true" />
+				<entry key="hibernate.format_sql" value="true" />
+				<entry key="hibernate.dialect" value="${database.dialect}" />
+				<entry key="hibernate.hbm2ddl.auto" value="${database.hbm2dll}" />
+				<entry key="hibernate.hibernate.ejb.naming_strategy" value="org.hibernate.cfg.ImprovedNamingStrategy" />
+				<entry key="hibernate.connection.charSet" value="UTF-8" />
+				<entry key="hibernate.connection.pool_size" value="1" />
+				<entry key="hibernate.current_session_context_class" value="thread" />
+				<entry key="hibernate.auto-import" value="false" />
+				<entry key="hibernate.cache.use_second_level_cache" value="true" />
+				<entry key="hibernate.cache.use_query_cache" value="true" />
+			</map>
+		</property>
+		<property name="jpaDialect">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" />
+		</property>
+	</bean>
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${database.driverClassName}" />
+		<property name="url" value="${database.url}" />
+		<property name="username" value="${database.username}" />
+		<property name="password" value="${database.password}" />
+	</bean>
+	
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
+
+    <tx:annotation-driven transaction-manager="transactionManager" />
+    
+</beans>

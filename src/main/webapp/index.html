@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>Cloud4Log</title>
+		<link type="text/css" href="css/jquery-ui-1.8.20.custom.css" rel="stylesheet" />
+		<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.8.20.custom.min.js"></script>
+		
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+		<link href='http://fonts.googleapis.com/css?family=Averia+Libre' rel='stylesheet' type='text/css'>
+		<script type="text/javascript" src="js/cloud4log.js"></script>
+		<script type="text/javascript" src="js/sammy.js"></script>
+		
+		
+		<script type="text/javascript">
+			$(function(){
+
+				// Tabs
+				$('#tabs').tabs();
+
+			});
+			
+			put('#/post/form', function() { 
+		        alert('This is a test');
+		        return false;
+		      });
+			
+		</script>
+	</head>
+	<body>
+	
+	<div id="mainContainer">
+		<div id="logo">
+			<h1>
+				<span class="logoCloud">Cloud</span>
+				<span class="logo4">4</span>
+				<span class="logoLog">Log</span>
+			</h1>
+		</div>
+
+		<div id="tabs">
+			<ul>
+				<li><a href="#tabs-1">FRED</a></li>
+				<li><a href="#tabs-2">ECOMMERCE</a></li>
+				<li><a href="#tabs-3">TEST</a></li>
+				<li><a href="#tabs-4">SETTINGS</a></li>
+			</ul>
+			
+			<div class="pageDivs" id="tabs-1">
+				<div class="header"><span class="header">Fred Application - Logging Info</span></div>
+			</div>
+			
+			<div class="pageDivs" id="tabs-2">
+				<div class="header"><span class="header">ECommerce Application - Logging Info</span></div>
+			</div>
+			
+			<div class="pageDivs" id="tabs-3">
+				<div class="header"><span class="header">Cloud4Log Log Test - Test your server is up and running!</span></div>
+				
+				<div class="formPanel">
+					<form action="#/logmessage" method="PUT">
+					<div class="formQuestion">
+						Error Message:
+					</div>
+					<div class="formInput">
+						<input type="text" name="errorMessage"  class="formInput"/>
+					</div>
+					<div class="formQuestion">
+						Stack trace:
+					</div>
+					<div class="formInput">
+						<textarea cols="70" rows="20" class="formInput"></textarea>
+					</div>
+					<div class="formQuestion">
+						Application:
+					</div>
+					<div class="formInput">
+						<input type="text" name="application"  class="formInput"/>
+					</div>
+					<div class="formQuestion">
+						Host:
+					</div>
+					<div class="formInput">
+						<input type="text" name="host"  class="formInput" disabled="disabled" value="localhost"></input>
+					</div>
+					
+					<div class="formQuestion">
+						Log Type:
+					</div>
+					<div class="formInput">
+						<input type="text" name="logType"  class="formInput"/>
+					</div>
+					
+					<div class="formQuestion">
+						Level:
+					</div>
+					<div class="formInput">
+						<input type="text" name="level"  class="formInput"/>
+					</div>
+					  
+					<p><input type="submit" value="Submit" class="button"/></p>
+					</form>
+					</div>
+			</div>
+			
+			<div class="pageDivs" id="tabs-4">
+				<div class="header"><span class="header">Setup your Cloud4Log - Your way</span></div>
+			</div>
+		</div>
+
+	
+	</div>
+
+	</body>
+</html>
+
+

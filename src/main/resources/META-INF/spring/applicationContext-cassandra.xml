@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Defines the core Dao Factory Provider -->
+	<bean id="daoFactory"
+		class="org.cloud4log.server.dao.implementation.DaoProviderFactory">
+		<constructor-arg index="0" ref="logMessageDao"/>
+	</bean>
+	
+	<bean id="cassandraFactory" class="org.cloud4log.server.dao.implementation.cassandra.CassandraFactory">
+	    <constructor-arg ref="cassandraSession"></constructor-arg>
+	</bean>
+	
+	<bean id="logMessageCassandraDaoFactory" factory-bean="daoFactory" factory-method="getLogMessageDao">
+	</bean>
+	
+	<bean id="sessionFactory" factory-bean="cassandraFactory" factory-method="getCassandraSession">
+	</bean>
+
+	<bean id="logMessageDao" class="org.cloud4log.server.dao.implementation.LogMessageCassandraDao" >
+		<constructor-arg index="0" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="cassandraSession" class="org.cloud4log.server.dao.implementation.cassandra.CassandraSession"
+	    c:cassandraHost="localhost" 
+	    c:cassandraPort="9160"
+	    c:keySpace="Cloud4Log"
+	    c:clusterName="Cloud4Log"
+	    c:maxConnectionsPerHost="5">
+	</bean>
+
+</beans>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- Defines the core Dao Factory Provider -->
+	<bean id="daoFactory"
+		class="org.cloud4log.server.dao.implementation.DaoProviderFactory">
+		<constructor-arg index="0" ref="logMessageDao"/>
+	</bean>
+
+	<bean id="logMessageDao" class="org.cloud4log.server.dao.implementation.LogMessageDao">
+		<constructor-arg index="0" ref="entityManager"/>
+		<constructor-arg index="1" type="Class" value="org.cloud4log.domain.LogMessage"></constructor-arg>
+	</bean>
+	
+	<bean id="logMessageDaoFactory" factory-bean="daoFactory" factory-method="getLogMessageDao">
+	</bean>
+
+</beans>

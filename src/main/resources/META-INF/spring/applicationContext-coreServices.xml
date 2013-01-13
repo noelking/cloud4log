@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<!-- Defines the core Log Message Factory Provider -->
+	<bean id="serviceFactory"
+		class="org.cloud4log.server.service.implementation.Cloud4LogServiceFactory">
+		<constructor-arg index="0" ref="logMessageService"/>
+	</bean>
+
+	<bean id="logMessageService" class="org.cloud4log.server.service.implementation.LogMesssageService">
+		<constructor-arg ref="logMessageDaoFactory"></constructor-arg>
+	</bean>
+	
+	<bean id="logMessageServiceFactory" factory-bean="serviceFactory" factory-method="getLogMessageService">
+	</bean>
+
+</beans>

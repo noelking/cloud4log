@@ -1,0 +1,160 @@
+@CHARSET "UTF-8";
+
+body, html {
+    background: url("../images/main-bg_02.png") repeat-x scroll 0 0 #232323;
+    color: #FFFFFF;
+    font: 300 14px/22px "Quattrocento Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 13px;
+    font-weight: normal;
+    line-height: 135%;   
+}
+
+body {
+	 background: none repeat scroll 0 0 transparent !important;
+}
+
+a {
+	color: #3C3C3C;
+	text-decoration: none;	
+}
+
+a:hover {
+	color: #F05A00;
+	text-decoration: underline;	
+}
+
+nav {
+	width: 100%;
+	float: left;	
+	height: 30px;
+	padding: 0px;
+	margin-bottom: 20px;
+}
+
+div#logo {
+	margin-bottom: 66px;	
+}
+
+div#mainContainer {
+	margin-top: 40px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 960px;
+}
+
+span.logoCloud {
+	font-family: 'Averia Libre', cursive;
+	text-transform: uppercase;
+	color: #232323;
+	font-size: 40px;
+}
+
+span.logo4 {
+	font-family: 'Averia Libre', cursive;	
+	text-transform: uppercase;
+	color: #232323;
+	font-size: 80px;	
+}
+
+span.logoLog {
+	font-family: 'Averia Libre', cursive;
+	text-transform: uppercase;
+	color: #F05A00;
+	font-size: 40px;	
+}
+
+div#someTabs {
+	left: 0px;	
+	margin: 0px;
+	padding: 0px;
+	width: 100%;
+}
+
+div#tabs {
+	background: none;
+	border: none;
+}
+
+ul {
+	padding-left: 30px !important;
+	background: none !important;
+	border: none  !important;
+}
+
+div.pageDivs {
+	background: url("../images/content-bg_01.png") repeat-y scroll 0 0 transparent !important;
+    padding-left: 30px !important;
+    padding-right: 0px !important;
+    padding-top: 0px !important;
+}
+
+span.header {
+	font-family: 'Averia Libre', cursive;
+	font-size: 25px;	
+}
+
+div.header {
+	background: url("images/top-bg.png") repeat-x scroll 0 0 #000000;
+    border: 1px solid #000000;
+    left: 0;
+    padding-left: 50px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    position: relative;
+}
+
+div.formPanel {
+	background: none repeat scroll 0 0 #1C1C1C;
+    border-radius: 6px 6px 6px 6px;
+    color: #E4E4E4;
+    margin: 20px;
+    padding: 10px;
+}
+
+input.button {
+    background: url("images/btn-bg-dark.jpg") repeat-x scroll 0 0 transparent;
+    border-color: #141414 #3C3C3C #3C3C3C #2D2D2D;
+    border-right: 1px solid #3C3C3C;
+    border-style: solid;
+    border-width: 1px;
+    color: #80A921;
+    font-weight: bold;
+    height: 44px;
+    margin: 20px 20px 20px 50px;
+    padding: 10px;
+    text-transform: uppercase;
+}
+
+input.button:hover {
+    background: black;
+    border-color: #141414 #3C3C3C #3C3C3C #2D2D2D;
+    border-right: 1px solid #3C3C3C;
+    border-style: solid;
+    border-width: 1px;
+    color: #F05A00;
+    font-weight: bold;
+    height: 44px;
+    margin: 20px 20px 20px 50px;
+    padding: 10px;
+    text-transform: uppercase;
+}
+
+div.formQuestion {
+	margin-left: 50px;
+	color: #555555;
+    font-family: Helvetica,Arial,Sans-Serif;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    line-height: 100%;
+    padding-bottom: 15px;
+    padding-top: 10px;
+}
+
+div.formInput {
+	margin-left: 50px;
+}
+
+input.formInput {
+	width: 500px;	
+}
